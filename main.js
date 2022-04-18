@@ -142,11 +142,23 @@ fs.readFile('words.txt', function(err, data) {
         }
     }
 
-    let noLetters = ['h','r']; // letter blacklist, array of letters
+    let wordSearched = "liver"; // 5 letter word that is searched
+    let wordReturn = "02022"; // 0 is grey, 1 is yellow, 2 is green. Example: 20112
+    let noLetters = "adusn"; // letter blacklist of old grey letters
+    
+    let wordArray = [];
+    for(let i=0; i<5; i++) {
+        wordArray[i] = [];
+        wordArray[i][0] = wordSearched.charAt(i);
+        wordArray[i][1] = parseInt(wordReturn.charAt(i));
+    }
 
-    returnPossible(words,[
-        ['n',0], ['o',2], ['d',2], ['a',2], ['l',0], // array of letters with letter property
-    ],noLetters)
+    let noLetterArray = [];
+    for(let i=0; i<noLetters.length; i++) {
+        noLetterArray[i] = noLetters.charAt(i);
+    }
+    
+    returnPossible(words,wordArray,noLetterArray)
 });
 
 // Construct word with
